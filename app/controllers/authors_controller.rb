@@ -1,11 +1,15 @@
 class AuthorsController < ApplicationController
+  def index
+    @authors = Author.all
+  end
+
   def new
   end
 
   def create
     @author = Author.new(author_params)
     @author.save
-    redirect_to root_path, notice: 'Success!'
+    redirect_to author_path(@author)
   end
 
   def show
